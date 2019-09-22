@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<!--==================================================================
+//
+// Web site: DOOR CRASH
+// Web page: RESTAURANTS
+// Description:
+//   Restaurant page includes all restaurant list, it's menu,estimated delivery times with delivery modes
+//	 and all are designed using datatables and styled by an extrernal css.  
+//=================================================================-->
+<head>
+	<title>Restaurants-Door Crash</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  
+</head>
+
+<body>
+<!--================================ Header ==================================== -->
+<div class="header">
+        <div class="logo">
+				   <h1>Door Crash</h1>
+        </div>
+            <div class="link">
+                <nav>
+                     <ul>
+                          <li class="lyellow"><a href="mainpage.html">Home</a></li>
+                          <li class="myellow"><a href="restaurants.html">Restaurants</a></li>
+                          <li class="yellow"><a href="order.html">Order</a></li>
+                    </ul>
+                </nav>
+			</div>
+</div>
+<!--===========================Content Part===================================== -->
+ <!--========================== DataTable =======================================-->
+ <div class="tbl_content">
+            <h2> Restaurant list</h2>
+			<hr>
+            <div class="dt_table">
+				<table id="rst_table" class="display">
+					<thead>
+						<tr>
+							<th>Restaurant</th>
+							<th>Items and their Costs</th>
+							<th>Delivery Mode</th>
+							<th>Estimated Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Row 1 Data 1</td>
+							<td>Row 1 Data 2</td>
+							<td>Row 1 Data 3</td>
+							<td>Row 1 Data 4</td>
+						</tr>
+
+						<tr>
+							<td>Row 2 Data 1</td>
+							<td>Row 2 Data 2</td>
+							<td>Row 2 Data 3</td>
+							<td>Row 2 Data 4</td>
+						</tr>
+
+						<tr>
+							<td>Row 3 Data 1</td>
+							<td>Row 3 Data 2</td>
+							<td>Row 3 Data 3</td>
+							<td>Row 3 Data 4</td>
+                
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
+<!--================================== Restaurant page javascript ==================================-->
+      <script type="text/javascript">
+        "use strict";
+        
+        var data =
+        [
+			[
+				"<img src='images/tacobell2.jpg' alt='Image Missing!'>",
+				"Nacho Fries: $1</br>Chalupa Supreme: $2.89</br>Cheese Quesadilla: $2.89</br>7-Layer Burrito: $3.19" ,
+				"Car</br>Bike</br>Scooter",
+				"30-35 Minutes"
+			],
+			
+			[
+				"<img src='images/redrobin.png' alt='Image Missing!'>",
+				"Classic Wedge Salad: $6.00</br>Pretzel Bites: $6.00</br>Onion Rings: $10.00</br>Veggie Burger: $10.79 " ,
+				"Car</br>Bike",
+				"35-40 Minutes"
+			],
+			
+			[
+				"<img src='images/neehees.png' alt='Image Missing!'>",
+				"Cut Mirch: $8.00</br>Garlic Butter Vadapav: $8.00</br>Idli Sambhar: $5.00</br>Masala Dosa: $5.00" ,
+				"Car</br>Bike</br>Scooter",
+				"30-40 Minutes"
+			],
+			
+			[
+				"<img src='images/chipotle.png' alt='Image Missing!'>",
+				"Chicken Burrito $6.50</br>Steak Taco $2.75</br>Vegetarian Salad $6.50</br>Chips & Salsa $1.95" ,
+				"Car</br>Scooter",
+				"25-35 Minutes"
+			],
+			
+			[
+				"<img src='images/burgerking.png' alt='Image Missing!'>",
+				"Chicken Nuggets: $5.99</br>Big Fish Sandwich: $3.99</br>Double Cheese Burger: $1.69</br>French Fries: $1.39" ,
+				"Car</br>Scooter",
+				"50-60 Minutes"
+			],
+			
+			[
+				"<img src='images/qdoba.png' alt='Image Missing!'>",
+				"Queso Burrito: $7.80</br>Mexican Gumbo: $7.80</br>Taco Salad: $7.30</br>Tortila Soup: $3.00" ,
+				"Bike</br>Scooter",
+				"15-20 Minutes"
+			],
+			
+			
+		  
+          
+
+        ];
+            
+        $(document).ready(function()
+        {  
+          $('#rst_table').DataTable(
+          {  
+            data: data
+          });
+        }); 
+        
+      </script>   
+<!--================================Footer================================ -->
+<div class="footer">
+        <div class="ft_logo">    
+                 <h1>Door Crash</h1>
+        </div>
+        <div class="ft_content">
+				<p>
+					<h2>Contact Us</h2>
+				</p>
+                 <p>4221 Cass Ave,Detroit, MI 48201</p>
+                 <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>     
+		</div>
+</div>
+
+</body>
+
+</html>

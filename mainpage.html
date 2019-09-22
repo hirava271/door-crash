@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<!--==================================================================
+//
+// Web site: DOOR CRASH
+// Web page: Main Page
+// Course:   CSC 5750
+// Homework: 01
+// Author:   <Darshana Anghan>
+// Date:     09/18/2019
+// Description:
+// This is a website for the food delivery in Detroit and Southgate.
+// Main page of this website includes information of the delivery services,owners and delivery modes.
+// designed in html block tags such as div,header,footer and some of the inline 
+// supporting tags styled using external stylesheet, google map etc.
+//=================================================================-->
+
+<head>
+	<title>Mainpage-Door crash</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Saira Stencil One" rel="stylesheet">
+	<script type="text/javascript">
+		localStorage.setItem("restaurantList", "Taco Bell,Red Robin,Neehee's,Chipotle,Burger King,Qdoba");
+	</script>
+</head>
+
+<body>
+<!--==============================Header================================ -->
+<div class="header">
+        <div class="logo">
+				   <h1>Door Crash</h1>
+        </div>
+            <div class="link">
+                <nav>
+                     <ul>
+                          <li class="lyellow"><a href="mainpage.html">Home</a></li>
+                          <li class="myellow"><a href="restaurants.html">Restaurants</a></li>
+                          <li class="yellow"><a href="order.html">Order</a></li>
+                    </ul>
+                </nav>
+			</div>
+</div>
+<!---================================== image animation ========================------>
+<div class="imagepanel">
+      <div class="slider"></div>
+</div> 
+<!---================================== main content =========================------->
+ <div class="mainpanel">
+        <div class="content">
+            <ul>
+                <li>
+<!--============================Delivery modes and hours of service====================================-->
+                    <h2>Cravings Delivered</h2><hr>
+                    <div class="left width2"> 
+                        <p>Are you hungry? Do you live in Detroit? We are here to SATISFY YOUR HUNGER. 
+							Get cravings delivered from your favorite restaurants 24/7 hours. Choose your convenient
+							delivery mode from car, scooter and bike.</p>
+                    </div>
+                    <div class="right width1">
+                        <img src="images/delivery.jpg" alt= "Image Missing!" class="image">
+                    </div>
+                </li>
+                <li>
+<!--==============================about us===========================================-->
+                    <h2>About Us</h2><hr>
+					 <div class="left width2">
+                        <p>DOOR CRASH is a technology company that helps you find and order food from wherever you are. 
+							We empower local restaurants and in turn, generate new ways for people to earn, work and live. 
+							Our website connects customers with local restaurants which participate in our delivery service.
+							By providing this platform, we deliver our customers' favorite food in minutes.</p>
+                    </div>
+                    <div class="right width1"> 
+                        <img src="images/aboutus.jpg" alt="Image Missing!" class="image">
+                    </div>                  
+                </li>
+                <li>
+<!---===============================owners=========================================------>
+                    <h2>Our Team</h2><hr>
+                    <div class="left width2"> 
+                        <p>DOOR CRASH was founded by Jane Smith in 2014, and is hearquartered in Detroit. Our team is 
+						   made of engineers, designers, testers, and operations.</p>
+                    </div>
+                    <div class="right width1">
+                        <img src="images/team.jpeg" alt="Image Missing!" class="image">
+                    </div>
+                </li>
+				 <li>
+<!----================================google map=======================================---->
+                    <h2>Location</h2><hr>
+                    <div class="map">
+                        <p>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.610873676488!2d-83.06626868524613!3d42.350818979187515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824d2b0a3c25fb9%3A0x9e026c251fe8479b!2s4221%20Cass%20Ave%2C%20Detroit%2C%20MI%2048201!5e0!3m2!1sen!2sus!4v1568823965294!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+						</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+	
+<!--================================= Footer ==================================== -->
+<div class="footer">
+        <div class="ft_logo">    
+                 <h1>Door Crash</h1>
+        </div>
+        <div class="ft_content">
+				<p>
+					<h2>Contact Us</h2>
+				</p>
+                 <p>4221 Cass Ave,Detroit, MI 48201</p>
+                 <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>     
+		</div>
+</div>
+</body>
+
+</html>
