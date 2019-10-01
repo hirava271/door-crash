@@ -21,11 +21,31 @@
 	<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Saira Stencil One" rel="stylesheet">
 	<script type="text/javascript">
-		localStorage.setItem("restaurantList", "Taco Bell,Red Robin,Neehee's,Chipotle,Burger King,Qdoba");
+        const restaurantAndMenuList = [
+            {"restaurantName": "Taco Bell", "foodItem": "Nacho Fries", "itemPrice": "$1"},
+            {"restaurantName": "Taco Bell", "foodItem": "Chalupa Supreme", "itemPrice": "$2.89"},
+            {"restaurantName": "Taco Bell", "foodItem": "Cheese Quesadilla", "itemPrice": "$2.89"},
+            {"restaurantName": "Taco Bell", "foodItem": "7-Layer Burrito", "itemPrice": "$3.19"},
+            {"restaurantName": "Red Robin", "foodItem": "Classic Wedge Salad", "itemPrice": "$6.00"},
+            {"restaurantName": "Red Robin", "foodItem": "Pretzel Bites", "itemPrice": "$6.00"},
+            {"restaurantName": "Red Robin", "foodItem": "Onion Rings", "itemPrice": "$10.00"},
+            {"restaurantName": "Red Robin", "foodItem": "Veggie Burger", "itemPrice": "$10.79"},
+            {"restaurantName": "Neehee's", "foodItem": "Cut Mirch", "itemPrice": "$8.00"},
+            {"restaurantName": "Neehee's", "foodItem": "Garlic Butter Vadapav", "itemPrice": "$8.00"},
+            {"restaurantName": "Neehee's", "foodItem": "Idli Sambhar", "itemPrice": "$5.00"},
+            {"restaurantName": "Neehee's", "foodItem": "Masala Dosa", "itemPrice": "$5.00"},
+            {"restaurantName": "Chipotle", "foodItem": "Chicken Burrito", "itemPrice": "$6.50"},
+            {"restaurantName": "Chipotle", "foodItem": "Steak Taco", "itemPrice": "$2.75"},
+            {"restaurantName": "Chipotle", "foodItem": "Vegetarian Salad", "itemPrice": "$6.50"},
+            {"restaurantName": "Chipotle", "foodItem": "Chips & Salsa", "itemPrice": "$1.95"}
+        ];
+		function setDataInLocalStorage() {
+            localStorage.setItem("restaurantAndMenuList", JSON.stringify(restaurantAndMenuList));
+        }
 	</script>
 </head>
 
-<body>
+<body onload="setDataInLocalStorage()">
 <!--==============================Header================================ -->
 <div class="header">
         <div class="logo">
@@ -44,7 +64,7 @@
 <!---================================== image animation ========================------>
 <div class="imagepanel">
       <div class="slider"></div>
-</div> 
+</div>
 <!---================================== main content =========================------->
  <div class="mainpanel">
         <div class="content">
@@ -52,8 +72,8 @@
                 <li>
 <!--============================Delivery modes and hours of service====================================-->
                     <h2>Cravings Delivered</h2><hr>
-                    <div class="left width2"> 
-                        <p>Are you hungry? Do you live in Detroit? We are here to SATISFY YOUR HUNGER. 
+                    <div class="left width2">
+                        <p>Are you hungry? Do you live in Detroit? We are here to SATISFY YOUR HUNGER.
 							Get cravings delivered from your favorite restaurants 24/7 hours. Choose your convenient
 							delivery mode from car, scooter and bike.</p>
                     </div>
@@ -65,20 +85,20 @@
 <!--==============================about us===========================================-->
                     <h2>About Us</h2><hr>
 					 <div class="left width2">
-                        <p>DOOR CRASH is a technology company that helps you find and order food from wherever you are. 
-							We empower local restaurants and in turn, generate new ways for people to earn, work and live. 
+                        <p>DOOR CRASH is a technology company that helps you find and order food from wherever you are.
+							We empower local restaurants and in turn, generate new ways for people to earn, work and live.
 							Our website connects customers with local restaurants which participate in our delivery service.
 							By providing this platform, we deliver our customers' favorite food in minutes.</p>
                     </div>
-                    <div class="right width1"> 
+                    <div class="right width1">
                         <img src="images/aboutus.jpg" alt="Image Missing!" class="image">
-                    </div>                  
+                    </div>
                 </li>
                 <li>
 <!---===============================owners=========================================------>
                     <h2>Our Team</h2><hr>
-                    <div class="left width2"> 
-                        <p>DOOR CRASH was founded by Jane Smith in 2014, and is hearquartered in Detroit. Our team is 
+                    <div class="left width2">
+                        <p>DOOR CRASH was founded by Jane Smith in 2014, and is hearquartered in Detroit. Our team is
 						   made of engineers, designers, testers, and operations.</p>
                     </div>
                     <div class="right width1">
@@ -96,12 +116,12 @@
                 </li>
             </ul>
         </div>
-        
+
     </div>
-	
+
 <!--================================= Footer ==================================== -->
 <div class="footer">
-        <div class="ft_logo">    
+        <div class="ft_logo">
                  <h1>Door Crash</h1>
         </div>
         <div class="ft_content">
@@ -109,7 +129,7 @@
 					<h2>Contact Us</h2>
 				</p>
                  <p>4221 Cass Ave,Detroit, MI 48201</p>
-                 <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>     
+                 <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>
 		</div>
 </div>
 </body>

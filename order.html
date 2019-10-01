@@ -8,208 +8,198 @@
 //   to order food from restaurant.
 //=========================================================================================-->
 <head>
-<title>Order-Door Crash</title>
-	<link href="style.css" type="text/css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-	<script type="text/javascript">
-	localStorage.setItem("restaurantList", "Taco Bell=Nacho Fries#$1:Chalupa Supreme#$2.89:Cheese Quesadilla#$2.89,Red Robin=Classic Wedge Salad#$6.00:Pretzel Bites#$6.00:Onion Rings#$10.00:Veggie Burger#$10.79,Neehee's=Cut Mirch#$8.00:Garlic Butter Vadapav#$8.00:Idli Sambhar#$5.00:Masala Dosa#$5.00,Chipotle,Burger King,Qdoba");
-	var restaurantString = localStorage.getItem("restaurantList");
-	var foodArray = new Array(16);
-	var restaurantArray = restaurantString.split(",");
-	
-	for(var i=0; i<restaurantArray.length; j++) {
-		var nameAndMenu = restaurantArray[i].split("=");
-		foodArray[i][0] = nameAndMenu[0];
-		var menuArray = nameAndMenu[1].split(":");
-		console.log("Menu: "+menuArray);
-	}
-	
-	function getFoodItems() {
-		for(var i=0; i< restaurantArray.length; i++)
-		{
-			//document.getElementById("r"+i).innerHTML = restaurantArray[i];
-			document.getElementById("r"+i).innerHTML = restaurantName[0];
-		}
-	}
-	
-	function setFoodItems(event) {
-		console.log("Menu: "+menuArray);
-	}
-	</script>
+    <title>Order-Door Crash</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <script type="text/javascript">
+        let restaurantList = [];
+
+        function getFoodItems() {
+            let foodItem = localStorage.getItem("restaurantAndMenuList");
+            let temp = JSON.parse(foodItem);
+            for (let i = 0; i < 16; i++) {
+                restaurantList.push(temp[i]);
+            }
+            if(restaurantList.length === 16) {
+                window.alert("Data successfully received.");
+            } else {
+                window.alert("Data retrieval failed");
+            }
+        }
+
+        function clearComboBox() {
+            let select = document.getElementById("menu");
+            let optionsLength = select.options.length;
+            for (let i = optionsLength - 1; i >= 0; i--) {
+                select.options[i] = null;
+            }
+        }
+
+        function setFoodItems(event) {
+            clearComboBox();
+            let select = document.getElementById("menu");
+            let option = document.createElement('option');
+            option.text = "French Fries $2.99";
+            select.add(option);
+            clearComboBox();
+            restaurantList.forEach((foodItem) => {
+                if (foodItem.restaurantName === event.value) {
+                    let option = document.createElement('option');
+                    option.text = foodItem.foodItem + " " + foodItem.itemPrice;
+                    select.add(option);
+                }
+
+            })
+        }
+
+        function selectFoodItem() {
+            let selectedItem = document.getElementById("menu").value;
+            let itemPrice = selectedItem.split(' $')[1];
+            document.getElementById("itemCost").value = '$'+itemPrice;
+        }
+    </script>
 </head>
 <body onload="getFoodItems()">
 <!----============================ Header ==============================---->
- <div class="header">
-        <div class="logo">
-				   <h1>Door Crash</h1>
-        </div>
-            <div class="link">
-                <nav>
-                     <ul>
-                          <li class="lyellow"><a href="mainpage.html">Home</a></li>
-                          <li class="myellow"><a href="restaurants.html">Restaurants</a></li>
-                          <li class="yellow"><a href="order.html">Order</a></li>
-                    </ul>
-                </nav>
-			</div>
+<div class="header">
+    <div class="logo">
+        <h1>Door Crash</h1>
+    </div>
+    <div class="link">
+        <nav>
+            <ul>
+                <li class="lyellow"><a href="mainpage.html">Home</a></li>
+                <li class="myellow"><a href="restaurants.html">Restaurants</a></li>
+                <li class="yellow"><a href="order.html">Order</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 <!---================== getting the information from user  ==============---->
- <div class="tbl_content">
-        <h2> Place Your Order</h2><hr>
-        <div class="tbl_order">
-          <form method="get" enctype="application/x-www-form-urlencoded" action="http://www.tipjar.com/cgi-bin/test">
-                <table>
-				<tr>
-					<td>
-						<input type="radio" id="restaurant0" value="0" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant0" id="r0"></label></input>
-						<input type="radio" id="restaurant1" value="1" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant1" id="r1"></label></input>
-						<input type="radio" id="restaurant2" value="2" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant2" id="r2"></label></input>
-						<input type="radio" id="restaurant3" value="3" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant3" id="r3"></label></input>
-						<input type="radio" id="restaurant4" value="4" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant4" id="r4"></label></input>
-						<input type="radio" id="restaurant5" value="5" name="selectedRestaurant" onChange=setFoodItems()><label for="restaurant5" id="r5"></label></input>
-					</td>
-				</tr>
-                    <tr>
-                        <td>
-                            <label>Name:</label>
-                        </td>
-                        <td>
-<!--=========================== take Name of User ===========================-->
-                            <input type="text" name="name" placeholder="Enter Your Name" maxlength="60" minlength="4" required>
-                        </td>
-                    </tr>
-					<tr>
-                        <td>
-                            <label>Contact Number:</label>
-                        </td>
-                        <td>
-<!--============================= take contact Number of User ======================-->
-                            <input type="text" name="contactnumber" placeholder="Enter Your Contact Number" maxlength="60" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label> Restaurant Name:</label>
-                        </td>
-                        <td>
-<!---==================== combo box to get name of restaurant to place order =============-->
-                            <select name="restaurantname" required>
-									<option value="tacobell">Tacobell</option>
-									<option value="red robin">Red Robin</option>
-									<option value="neehee's" selected="">Neehee's</option>
-									<option value="chipotle">Chipotle</option>
-									<option value="burger king">Burger King</option>
-									<option value="qdoba">Qdoba</option>		
-							</select>
-
-                        </td>
-                    </tr>
-					<tr>
-                        <td>
-                            <label>Restaurant Item:</label>
-                        </td>
-                        <td>
-<!--====================== combo box group to take restaurant item from  User ===============-->
-								<select name="restaurantitem" multiple required>
-										<optgroup label="Tacobell">
-											<option selected="">Nacho Fries</option>
-											<option>Chalupa Supreme</option>
-											<option>Cheese Quasadila</option>
-											<option>7-Layer Burrito</option>
-										</optgroup>
-										<optgroup label="Red Robin">
-											    <option>Classic Wedge Salad</option>
-											    <option>Pretzel Bites</option>
-												<option>Onion Rings</option>
-												<option>Veggie Burger</option>
-										</optgroup>
-										<optgroup label="Neehee's">
-											    <option>Cut Mirch</option>
-											    <option>Garlic Butter Vadapav</option>
-												<option>Idli Sambhar</option>
-												<option>Masala Dosa</option>
-										</optgroup>
-										<optgroup label="Chipotle">
-											    <option>Chicken Burrito</option>
-											    <option>Steak Taco</option>
-												<option>Vegetarian Salad</option>
-												<option>Chips & Salsa</option>
-										</optgroup>
-										<optgroup label="Burger King">
-											    <option>Chicken Nuggets</option>
-											    <option>Big Fish Sandwich</option>
-												<option>Double Cheese Burger</option>
-												<option>French Fries</option>
-										</optgroup>
-										<optgroup label="Qdoba">
-											    <option>Queso Burrito</option>
-											    <option>Mexican Gumbo</option>
-												<option>Taco Salad</option>
-												<option>Tortila Soup</option>
-										</optgroup>	
-								</select>
-                        </td>
-                    </tr>
-					<tr>
-                        <td>
-                            <label>Item Quantity:</label>
-                        </td>
-                        <td>
-<!---=========================== take item quantity from User ============================-->
-                            <input type="text" name="itemquantity" placeholder="Enter item quantity" maxlength="10" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>Home Address:</label>
-                        </td>
-                        <td>
-<!----=========================== take address from the user ============================-->
-                            <input type="text" name="address" placeholder="Address " maxlength="" required>  
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>       
-                        </td>
-                        <td> 
-<!--================================ take city from the user ===============================-->
-                           <input type="text" name="city" placeholder="City" maxlength="20" required>     
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>       
-                        </td>
-                        <td>
-<!--============================== take postal code from the user ===========================-->
-                             <input type="number" name="postalcode" placeholder="Enter Postal Code (Numbers only)" maxlength="5" pattern="\d*" required>    
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-<!---============================= button to place the order =============================---->
-                            <input type="submit" value="Place The Order">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+<div class="tbl_content">
+    <h2> Place Your Order</h2>
+    <hr>
+    <div class="tbl_order">
+        <form method="get" enctype="application/x-www-form-urlencoded" action="http://www.tipjar.com/cgi-bin/test">
+            <table>
+                <tr>
+                    <td>
+                        <input type="radio" id="restaurant0" name="selectedRestaurant" value="Taco Bell"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant0" id="r0">Taco Bell</label>
+                        <input type="radio" id="restaurant1" name="selectedRestaurant" value="Red Robin"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant1" id="r1">Red Robin</label>
+                        <input type="radio" id="restaurant2" name="selectedRestaurant" value="Neehee's"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant2" id="r2">Neehee's</label>
+                        <input type="radio" id="restaurant3" name="selectedRestaurant" value="Chipotle"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant3" id="r3">Chipotle</label>
+                    </td>
+                <tr>
+                    <td>
+                        <label>Name:</label>
+                    </td>
+                    <td>
+                        <!--=========================== take Name of User ===========================-->
+                        <input type="text" name="name" placeholder="Enter Your Name" maxlength="60" minlength="4"
+                               required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Contact Number:</label>
+                    </td>
+                    <td>
+                        <!--============================= take contact Number of User ======================-->
+                        <input type="text" name="contactnumber" placeholder="Enter Your Contact Number" maxlength="60"
+                               required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Restaurant Item:</label>
+                    </td>
+                    <td>
+                        <!--====================== combo box group to take restaurant item from  User ===============-->
+                        <select id="menu" onchange=selectFoodItem()>
+                            <option>Select food item</option>
+                            <option>Italian Club $9.99</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Item Quantity:</label>
+                    </td>
+                    <td>
+                        <!---=========================== take item quantity from User ============================-->
+                        <input type="text" name="itemquantity" placeholder="Enter item quantity" maxlength="10"
+                               required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Item Cost:</label>
+                    </td>
+                    <td>
+                        <!---=========================== show item cost ============================-->
+                        <input type="text" id="itemCost" name="itemCost" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Home Address:</label>
+                    </td>
+                    <td>
+                        <!----=========================== take address from the user ============================-->
+                        <input type="text" name="address" placeholder="Address " maxlength="" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <!--================================ take city from the user ===============================-->
+                        <input type="text" name="city" placeholder="City" maxlength="20" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <!--============================== take postal code from the user ===========================-->
+                        <input type="number" name="postalcode" placeholder="Enter Postal Code (Numbers only)"
+                               maxlength="5" pattern="\d*" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <!---============================= button to place the order =============================---->
+                        <input type="submit" value="Place The Order">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-	
+</div>
+
 
 <!--============================== Footer ============================================= -->
 <div class="footer">
-        <div class="ft_logo">    
-                 <h1>Door Crash</h1>
-        </div>
-        <div class="ft_content">
-				<p>
-					<h2>Contact Us</h2>
-				</p>
-                 <p>4221 Cass Ave,Detroit, MI 48201</p>
-                 <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>     
-		</div>
+    <div class="ft_logo">
+        <h1>Door Crash</h1>
+    </div>
+    <div class="ft_content">
+        <p>
+        <h2>Contact Us</h2>
+        </p>
+        <p>4221 Cass Ave,Detroit, MI 48201</p>
+        <p>Call: +1 (734) 447 7000| <a href="mailto:info@doorcrash.com">Email: info@doorcrash.com</a></p>
+    </div>
 </div>
 </body>
 
