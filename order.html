@@ -13,6 +13,7 @@
     <link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <script type="text/javascript">
         let restaurantList = [];
+        let itemPrice;
 
         function getFoodItems() {
             let foodItem = localStorage.getItem("restaurantAndMenuList");
@@ -20,7 +21,7 @@
             for (let i = 0; i < 16; i++) {
                 restaurantList.push(temp[i]);
             }
-            if(restaurantList.length === 16) {
+            if (restaurantList.length === 16) {
                 window.alert("Data successfully received.");
             } else {
                 window.alert("Data retrieval failed");
@@ -54,8 +55,13 @@
 
         function selectFoodItem() {
             let selectedItem = document.getElementById("menu").value;
-            let itemPrice = selectedItem.split(' $')[1];
-            document.getElementById("itemCost").value = '$'+itemPrice;
+            itemPrice = selectedItem.split(' $')[1];
+            let quantity = document.getElementById("itemQuantity").value;
+            document.getElementById("itemCost").value = '$' + (itemPrice * quantity * 1.06).toFixed(2);
+        }
+
+        function updateCosts(event) {
+            document.getElementById("itemCost").value = '$' + (event.value * itemPrice * 1.06).toFixed(2);
         }
     </script>
 </head>
@@ -135,8 +141,8 @@
                     </td>
                     <td>
                         <!---=========================== take item quantity from User ============================-->
-                        <input type="text" name="itemquantity" placeholder="Enter item quantity" maxlength="10"
-                               required>
+                        <input type="text" id="itemQuantity" name="itemQuantity" placeholder="Enter item quantity" maxlength="10"
+                               value="1" onchange=updateCosts(this)>
                     </td>
                 </tr>
                 <tr>
