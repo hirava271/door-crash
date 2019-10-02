@@ -1,5 +1,5 @@
 /*==========================================================
- Web site: DOOR CRASH
+ Web site: DOOR CRASH Version 2.0
  CSS page: style.css
 ==========================================================*/ 
 body{
@@ -51,7 +51,7 @@ navigation
 .link ul li a {
 	margin: 10px;
     padding: 16px;
-    width: 200px;
+    width: 180px;
 	height:22px;
     display: block;
     color: black;
@@ -59,6 +59,7 @@ navigation
     text-decoration: none;
     font-size: 29px;
 	font-family:Saira Stencil One;
+	font-style:italic;
 }
 .lyellow{
     background-color: #fbeea1;
@@ -141,13 +142,21 @@ image animation
 .mainpanel ul li{
     text-align: center;
 	margin: 0;
-    height: 350px;
+    height: 450px;
     padding:0;
 }
 .image{
 	padding:5px;
-    width:400px;
-    height:230px;
+    width:65%;
+    height:65%;
+}
+/*=======================================================
+media query is triggered when screen is less than 1000px
+=======================================================*/
+@media only screen and (max-width:1000px) {
+	.mainpanel,.image, .imagepanel{
+		background:white;
+	  }
 }
 /*====================================================
 map
@@ -168,6 +177,7 @@ Restaurant Page----Main Content
 }
 .tbl_content h2{
     text-align: center;
+	font-weight:bold;
     margin: 5px;
     padding: 7px;
 	text-shadow: 1px 1px 2px purple;
@@ -197,20 +207,34 @@ order placing---Main Content
 	text-align:left;
     font-size: 19px;
 }
-.tbl_order input{
+.tbl_order input[type=text]{
     width: 520px;
-    height: 45px;
+    height: 30px;
     margin: 5px;
 	padding:3px;
 	font-size:15px;
     border: 2px solid #fd8597;
 	border-radius: 5px;
 }
+.tbl_order input[type=number]{
+    width: 520px;
+    height: 30px;
+    margin: 5px;
+	padding:3px;
+	font-size:15px;
+    border: 2px solid #fd8597;
+	border-radius: 5px;
+}
+.tbl_order input[type=radio]{
+    margin: 5px;
+	padding:3px;
+	font-size:15px;
+}
 .tbl_order select{
 	font-size:15px;
 	padding:3px;
     width: 520px;
-    height: 45px;
+    height: 30px;
     margin: 5px;
     border: 2px solid #fd8597;
 	border-radius: 5px;
@@ -218,6 +242,7 @@ order placing---Main Content
 .tbl_order input[type=submit]{
     padding:3px;
     margin:8px;
+	width:520px;
 	border:none;
     border-radius:5px;
     cursor: pointer;

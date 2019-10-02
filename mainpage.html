@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
-<!--==================================================================
+<!--=========================================================================================================================================
 //
-// Web site: DOOR CRASH
-// Web page: Main Page
+// Web site: DOOR CRASH Version 2.0
+// Web page: Main Page v2
 // Course:   CSC 5750
-// Homework: 01
+// Homework: 02
 // Author:   <Darshana Anghan>
-// Date:     09/18/2019
+// Date:     10/02/2019
 // Description:
 // This is a website for the food delivery in Detroit and Southgate.
 // Main page of this website includes information of the delivery services,owners and delivery modes.
 // designed in html block tags such as div,header,footer and some of the inline 
 // supporting tags styled using external stylesheet, google map etc.
-//=================================================================-->
+// Version 2.0
+// This update is all about javascript and jQuery to make this website more interactive. 
+// mainpage contain the global array which holds the global array for restaurant food items and also updated @media query in css file. 
+//========================================================================================================================================-->
 
 <head>
-	<title>Mainpage-Door crash</title>
+	<title>Mainpage-Door crash V2</title>
 	<link href="style.css" type="text/css" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Saira Stencil One" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!----------------- global aaray to hold restaurant food items -------------------------->
 	<script type="text/javascript">
         const restaurantAndMenuList = [
             {"restaurantName": "Taco Bell", "foodItem": "Nacho Fries", "itemPrice": "$1"},

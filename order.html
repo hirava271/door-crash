@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
 <!--=========================================================================================
-// Web site: DOOR CRASH
-// Web page: ORDER PLACING
+// Web site: DOOR CRASH Version 2.0
+// Web page: ORDER PLACING v2
 // Description:
+// Version 1.0
 //   Order Placing page designed using HTML form, different input tags and HTML validations 
 //   to order food from restaurant.
+// Version 2.0
+//   This update mostly covers Javascript and jQuery related changes. 
+//   It is mainly made with HTML, CSS, Javascript and jQuery.
+//   This page will use Javascript function, arrays, DOM selection property etc to order food.
 //=========================================================================================-->
 <head>
-    <title>Order-Door Crash</title>
+    <title>Order-Door Crash V2</title>
     <link href="style.css" type="text/css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Saira Stencil One" rel="stylesheet">
     <script type="text/javascript">
         let restaurantList = [];
-        let itemPrice;
-
+		let itemPrice;
+		<!-----===================== Functions ========================----->
         function getFoodItems() {
             let foodItem = localStorage.getItem("restaurantAndMenuList");
             let temp = JSON.parse(foodItem);
             for (let i = 0; i < 16; i++) {
                 restaurantList.push(temp[i]);
             }
-            if (restaurantList.length === 16) {
+            if(restaurantList.length === 16) {
                 window.alert("Data successfully received.");
             } else {
                 window.alert("Data retrieval failed");
@@ -41,13 +47,13 @@
             let select = document.getElementById("menu");
             let option = document.createElement('option');
             option.text = "French Fries $2.99";
-            select.add(option);
+            select.appendChild(option);
             clearComboBox();
             restaurantList.forEach((foodItem) => {
                 if (foodItem.restaurantName === event.value) {
                     let option = document.createElement('option');
                     option.text = foodItem.foodItem + " " + foodItem.itemPrice;
-                    select.add(option);
+                    select.appendChild(option);
                 }
 
             })
@@ -88,22 +94,7 @@
     <div class="tbl_order">
         <form method="get" enctype="application/x-www-form-urlencoded" action="http://www.tipjar.com/cgi-bin/test">
             <table>
-                <tr>
-                    <td>
-                        <input type="radio" id="restaurant0" name="selectedRestaurant" value="Taco Bell"
-                               onChange=setFoodItems(this)>
-                        <label for="restaurant0" id="r0">Taco Bell</label>
-                        <input type="radio" id="restaurant1" name="selectedRestaurant" value="Red Robin"
-                               onChange=setFoodItems(this)>
-                        <label for="restaurant1" id="r1">Red Robin</label>
-                        <input type="radio" id="restaurant2" name="selectedRestaurant" value="Neehee's"
-                               onChange=setFoodItems(this)>
-                        <label for="restaurant2" id="r2">Neehee's</label>
-                        <input type="radio" id="restaurant3" name="selectedRestaurant" value="Chipotle"
-                               onChange=setFoodItems(this)>
-                        <label for="restaurant3" id="r3">Chipotle</label>
-                    </td>
-                <tr>
+				<tr>
                     <td>
                         <label>Name:</label>
                     </td>
@@ -121,6 +112,26 @@
                         <!--============================= take contact Number of User ======================-->
                         <input type="text" name="contactnumber" placeholder="Enter Your Contact Number" maxlength="60"
                                required>
+                    </td>
+                </tr>
+                <tr>
+					<td>
+                        <label>Restaurant Name:</label>
+                    </td>
+                    <td>
+					    <!--============================= take restaurant from User ======================-->
+                        <input type="radio" id="restaurant0" name="selectedRestaurant" value="Taco Bell"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant0" id="r0">Taco Bell</label>
+                        <input type="radio" id="restaurant1" name="selectedRestaurant" value="Red Robin"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant1" id="r1">Red Robin</label>
+                        <input type="radio" id="restaurant2" name="selectedRestaurant" value="Neehee's"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant2" id="r2">Neehee's</label>
+                        <input type="radio" id="restaurant3" name="selectedRestaurant" value="Chipotle"
+                               onChange=setFoodItems(this)>
+                        <label for="restaurant3" id="r3">Chipotle</label>
                     </td>
                 </tr>
                 <tr>
